@@ -1,0 +1,16 @@
+#+TITLE: Change log for fast-TFD algorithms
+#
+# started: 23-Jan-2013
+
+* [2013-05-08 Wed]
+  + minor fixes to window functions in kernel
+
+* [2013-01-23 Wed]
+  + added the argument 'n' to the lag window function to normalise lag window (g2), e.g.:
+
+    >> dtfd_sep1(x,{floor(256/8),'rect',0,1},{11,'hann',0,0,'n'},256,128);
+
+* [2013-03-29 Fri]
+  + can use 'time-reversed' lag window, e.g.
+
+    >> dtfd_sep1(x,{floor(256/8),'rect',0,1},{128,'bartlett,0,0,'n',1},256,128);
