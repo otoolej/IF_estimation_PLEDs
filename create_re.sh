@@ -9,7 +9,7 @@ fi
 
 RELEASE="$1";
 
-LONG_DIR='~/deusto/software/EEG/PLEDs_IF_share/src/';
+LONG_DIR='~/deusto/software/EEG/PLEDs_IF_share/';
 NEW_DIR=${LONG_DIR}/releases/estimate_IF_v;
 NEW_DIR=${NEW_DIR}${RELEASE}
 
