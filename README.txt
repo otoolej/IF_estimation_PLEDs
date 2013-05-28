@@ -1,3 +1,7 @@
+Methods to Estimate the Instantaneous Frequency (IF) of EEG Periodic
+Discharges
+
+
 Table of Contents
 ─────────────────
 
@@ -10,10 +14,6 @@ Table of Contents
 6 Test computer setup
 7 References
 8 Contact
-
-
-Methods to Estimate the Instantaneous Frequency (IF) of EEG Periodic
-Discharges
 
 
 1 Overview
@@ -99,7 +99,7 @@ Discharges
 5 Version
 ═════════
 
-  ⁃ Version: 0.1
+  ⁃ Version: 0.12
   ⁃ Last update [2013-05-28 Tue]
 
 
@@ -129,6 +129,5 @@ Discharges
     Health, University College Dublin, Western Gateway Building, Room
     2.17, Cork, Ireland
   • Email j.otoole@ieee.org; jotoole@ucc.ie
-
 
 

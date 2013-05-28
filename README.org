@@ -78,7 +78,7 @@ Methods to Estimate the Instantaneous Frequency (IF) of EEG Periodic Discharges
 
 
 * Version
-  + Version: 0.1
+  + Version: 0.12
   + Last update [2013-05-28 Tue]
 
 
