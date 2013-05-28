@@ -11,4 +11,5 @@
 \cp -p /home/otoolej/ucc/software/utils_common/SP_general/make_odd.m ./
 \cp -p /home/otoolej/ucc/software/utils_common/SP_general/padWin.m ./
 \cp -p /home/otoolej/ucc/software/utils_common/SP_general/shiftWin.m ./
+\cp -p /home/otoolej/ucc/software/utils_common/SP_general/get_epoch_window.m ./
 
