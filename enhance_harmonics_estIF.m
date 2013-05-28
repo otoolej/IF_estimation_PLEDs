@@ -1,7 +1,7 @@
 %-------------------------------------------------------------------------------
 % enhance_harmonics_estIF: estimate IF using time-varying cepstrum approach
 %
-% Syntax: if_law = enhance_harmonics_estIF(x,Fs,Ntime,METHOD)
+% Syntax: [if_law,if_law_samples,f_scale] = enhance_harmonics_estIF(x,Fs,Ntime,METHOD)
 %
 % Inputs: 
 %     x      - time-domain signal (length N)
@@ -10,7 +10,9 @@
 %     METHOD - either 'tfd' (proposed method) or 'tfdonly'
 %
 % Outputs: 
-%     if_law - IF law
+%     if_law         - estimate of IF
+%     if_law_samples - estimate of IF in samples 
+%     f_scale        - frequency scaling factor
 %
 % Example:
 %    b=load('PLED_example_epoch.mat');
@@ -24,7 +26,7 @@
 % John M. O' Toole, University College Cork
 % Started: 09-05-2013
 %-------------------------------------------------------------------------------
-function if_law=enhance_harmonics_estIF(x,Fs,Ntime,METHOD)
+function [if_law,if_law_samples,f_scale]=enhance_harmonics_estIF(x,Fs,Ntime,METHOD)
 if(nargin<3 || isempty(Ntime)) Ntime=[]; end
 if(nargin<4 || isempty(METHOD)) METHOD='tfd'; end
 
