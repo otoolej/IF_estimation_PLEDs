@@ -13,6 +13,8 @@
 %     if_law         - estimate of IF
 %     if_law_samples - estimate of IF in samples 
 %     f_scale        - frequency scaling factor
+%     tf             - TFD after homomorphic filtering
+%     xp             - signal x after enhancing spikes (with NLEO)
 %
 % Example:
 %    b=load('PLED_example_epoch.mat');
@@ -26,7 +28,7 @@
 % John M. O' Toole, University College Cork
 % Started: 09-05-2013
 %-------------------------------------------------------------------------------
-function [if_law,if_law_samples,f_scale]=enhance_harmonics_estIF(x,Fs,Ntime,METHOD)
+function [if_law,if_law_samples,f_scale,tf,xp]=enhance_harmonics_estIF(x,Fs,Ntime,METHOD)
 if(nargin<3 || isempty(Ntime)) Ntime=[]; end
 if(nargin<4 || isempty(METHOD)) METHOD='tfd'; end
 

@@ -24,10 +24,15 @@ if(nargin<5 || isempty(L_filt)), L_filt=[]; end
 
 DBplot=0;
 
+if(LP_fc==0), LP_fc=[]; end
+if(HP_fc==0), HP_fc=[]; end
+
 N=length(x);
-if(isempty(L_filt))
+if(isempty(L_filt) || L_filt>(N/4))
     L_filt=make_odd(round(N/2-4)); 
 end
+
+
 
 %---------------------------------------------------------------------
 % either bandpass, low-pass, or high-pass
@@ -46,7 +51,7 @@ elseif(~isempty(HP_fc))
     b=fir1(L_filt,filt_passband,'high');
     
 else
-    error('need to specify cut-off freuqency.');
+    error('need to specify cut-off frequency.');
 end
 
   
