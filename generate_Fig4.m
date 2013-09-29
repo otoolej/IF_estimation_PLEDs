@@ -14,7 +14,7 @@
 %
 % [1] B. Boashash, A. Ghazem, J.M. O' Toole, Time-frequency processing of non-stationary
 % signals to aid diagnosis: highlights from medical applications, IEEE Signal Processing
-% Magazine, 2013, in press
+% Magazine, November 2013, in press
 
 % John M. O' Toole, University College Cork
 % Started: 10-05-2013
