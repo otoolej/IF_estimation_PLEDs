@@ -39,7 +39,7 @@ if(size(x,1)<2) x=x.'; end
 iflaw=[]; 
 
 DB=0;
-DBverbose=1;
+DBverbose=0;
 DBplot_iter=0;
 DBplot_ONLY=0;
 
