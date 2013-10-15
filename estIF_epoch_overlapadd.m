@@ -48,8 +48,6 @@ DBplot_ONLY=0;
 % Set parameters
 %---------------------------------------------------------------------
 EPOCH_LENGTH=20.48; % in seconds
-% $$$ EPOCH_LENGTH=5.12; % (when using with spike-IF-estimation method) 
-% $$$ EPOCH_LENGTH=40.96; % in seconds
 OVERLAP=75; % in percent
 WIN_TYPE='rect';
 WIN_IF=1;
@@ -154,11 +152,6 @@ for k=1:N_epochs
                     enhance_harmonics_estIF(x_epoch(k,:),Fs,Ntime,METHOD_TYPE);
             end
             
-% $$$             if(DBplot_iter & ~isempty(tfd_filt))
-% $$$                 plot_TFD_with_IFs(tfd_filt,x_epoch(k,:),Fs,if_law{k});
-% $$$                 pause(1);
-% $$$             end
-        
         end
     
 
