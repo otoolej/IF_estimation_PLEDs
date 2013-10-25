@@ -4,14 +4,30 @@
 % Syntax: tf_tracks=tracks_IF_MCQ_method(tf,Fs)
 %
 % Inputs: 
-%     tf   - time-frequency distribution
-%     Fs - sampling frequency
-%     delta_limit - 
+%     tf          - time-frequency distribution
+%     Fs          - sampling frequency
+%     delta_limit - limit to search for next point in track
+%     min_length  - track must be of minimum length (otherwise is rejected)
 %
 % Outputs: 
-%     tf_tracks - 
+%     individual_tracks - each track separately (cell)
+%     tf_tracks         - time-frequency location of tracks (matrix)
 %
 % Example:
+%    b=load('synth_signal_example_0dB.mat');
+%    N=1024; Ntime=512; 
+%    x=b.x(1:N); Fs=b.Fs;
+%
+%    tf=gen_TFD_EEG(x,Fs,Ntime,'sep');
+%    [it,tf_tracks]=tracks_MCQmethod(tf,Fs,96,74);
+%
+%    t_scale=(length(x)/b.Fs/Ntime);  f_scale=(1/size(tf,2))*(Fs/2);
+%    figure(1); clf; hold all; 
+%    for n=1:length(it)
+%          plot(it{n}(:,1).*t_scale,it{n}(:,2).*f_scale,'k+'); 
+%    end
+%    xlabel('time (seconds)'); ylabel('frequency (Hz)');
+%    xlim([0 N/Fs]);
 %     
 %
 % [1] McAulay, R. J., & Quatieri, T. F. (1986). Speech analysis/synthesis based on a

@@ -14,15 +14,19 @@
 %     tfd - TFD of size Ntime x Nfreq 
 %
 % Example:
-%    b=load('PLED_example_epoch.mat');
-%    tf=gen_TFD_EEG(b.x,b.Fs,512,'sep');
-%    figure(1); clf; vtfd(tf,b.x,b.Fs);
+%    b=load('synth_signal_example_0dB.mat');
+%    x=b.x(1:1024); 
+%
+%    tf=gen_TFD_EEG(x,b.Fs,512,'sep');
+%    figure(1); clf; vtfd(tf,x,b.Fs);
+%    xlim([0 8]);
 %     
 %
 % [1] J.M. O' Toole and B. Boashash, "Fast and memory-efficient
 % algorithms for computing quadratic time--frequency distributions", 
-% Applied and Computational Harmonic Analysis, Feb. 2013, 
-% doi:10.1016/j.acha.2013.01.003
+% Applied and Computational Harmonic Analysis, 35(3), pp. 350-358, 2013
+% (doi:10.1016/j.acha.2013.01.003)
+
   
 
 % John M. O' Toole, University College Cork

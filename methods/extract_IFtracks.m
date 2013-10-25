@@ -3,7 +3,7 @@
 % method from [1]. Also, include a rule-based approach for selecting only 1 IF (which
 % should be the fundamental for a haromonic signal)
 %
-% Syntax: if_tracks=extract_IFtracks(tf,N,Fs)
+% Syntax: [if_law,if_law_samples,f_scale,t_scale,if_tracks]=extract_IFtracks(tf,N,Fs)
 %
 % Inputs: 
 %     tf - time-frequency distribution
@@ -11,10 +11,23 @@
 %     Fs - sampling frequency
 %
 % Outputs: 
-%     if_tracks - 
+%     if_law         - IF law (in Hz/s)
+%     if_law_samples - IF law (in samples)
+%     f_scale        - frequency scaling factor
+%     t_scale        - time scaling factor
+%     if_tracks      - raw IF tracks (before using rule-based approach to decide IF)
+% 
 %
 % Example:
-%     
+%    b=load('synth_signal_example_0dB.mat');
+%    x=b.x(1:1024); 
+%
+%    tf=gen_TFD_EEG(x,b.Fs,512,'sep');
+%    if_law=extract_IFtracks(tf,length(b.x),b.Fs);
+%    figure(2); clf; 
+%    plot(if_law(:,1),if_law(:,2));    
+%    xlabel('time (seconds)'); ylabel('frequency (Hz)');
+%
 %
 % [1] McAulay, R. J., & Quatieri, T. F. (1986). Speech analysis/synthesis based on a
 % sinusoidal representation. IEEE Transactions on Acoustics, Speech, and Signal
@@ -72,7 +85,7 @@ min_component_length=floor( MIN_IF_LENGTH/t_scale );
 % 1) estimate IF tracks (using method in [1])
 %---------------------------------------------------------------------
 if_tracks=tracks_MCQmethod(tfd,Fs,delta_freq_samples,min_component_length);
-
+delta_freq_samples,min_component_length
   
 if(isempty(if_tracks))
     return;

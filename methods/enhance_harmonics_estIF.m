@@ -17,12 +17,17 @@
 %     xp             - signal x after enhancing spikes (with NLEO)
 %
 % Example:
-%    b=load('PLED_example_epoch.mat');
-%    if_law=enhance_harmonics_estIF(b.x,b.Fs);
+%     b=load('synth_signal_example_0dB.mat');
+%     if_law=enhance_harmonics_estIF(b.x,b.Fs);
 %
-%    figure(1); clf; 
-%    plot(if_law(:,1),if_law(:,2)); ylim([0 5]);
-%    xlabel('Time (secs)'); ylabel('Frequency (Hz)');
+%     % plot:
+%     figure(1); clf;  hold all;
+%     plot(if_law(:,1),if_law(:,2)); 
+%     plot( (1:length(b.true_IF))./b.Fs,b.true_IF);
+%     legend('proposed','true IF');
+%     xlim([10 30]); ylim([0 2]);
+%     xlabel('time (seconds)'); 
+%     ylabel('frequency (Hz)'); 
 %
 
 % John M. O' Toole, University College Cork
@@ -31,10 +36,8 @@
 function [if_law,if_law_samples,f_scale,tf,xp]=enhance_harmonics_estIF(x,Fs,Ntime,METHOD)
 if(nargin<3 || isempty(Ntime)) Ntime=[]; end
 if(nargin<4 || isempty(METHOD)) METHOD='tfd'; end
-
-
 if_law=[]; if_law_samples=[]; f_scale=[]; t_scale=[];
-DBplot=0;
+
 
 
 IF_EST_METHOD='MQ';
@@ -57,7 +60,6 @@ else
     xp=x;
 end
 
-
 %---------------------------------------------------------------------
 % b) generate TFD
 %---------------------------------------------------------------------
@@ -66,13 +68,6 @@ if(strcmp(LAG_METHOD,'none'))
     xp=x;
 end
 tf=gen_TFD_EEG(xp,Fs,Ntime);
-
-
-if(DBplot)
-    figure(43); clf;
-    wide_vtfd(thres(tf,0),x,Fs,0,10);
-end
-    
 
 
 %---------------------------------------------------------------------
@@ -89,11 +84,6 @@ end
 [if_law,if_law_samples,f_scale,t_scale]= ...
     extract_IFtracks(tf,length(x),Fs);
 
-
-if(DBplot)
-    figure(44); clf;
-    wide_vtfd(thres(tf,0),x,Fs,0.2,[]);
-end
 
 
 

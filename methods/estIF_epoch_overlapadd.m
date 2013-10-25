@@ -1,13 +1,14 @@
 %-------------------------------------------------------------------------------
-% estIF_epoch_overlapadd: run method to extract IF from signal.  Assume that x is long and analysis
-% needs to be done on an epoch by epoch basis. Overlap and add IF estimate.
+% estIF_epoch_overlapadd: run method to extract IF from signal.  Assume that x 
+% is long and analysis needs to be done on an epoch by epoch basis. Overlap 
+% and add IF estimate.
 %
 % Syntax: [iflaw,t_scale,f_scale]=estIF_epoch_overlapadd(x,Fs,METHOD_TYPE)
 %
 % Inputs: 
 %          x    - input signal (of length N)
 %          Fs   - sampling frequency
-%   METHOD_TYPE - 'tfd', 'tfdcosh', 'tfdonly', 'spike'
+%   METHOD_TYPE - 'tfd', 'tfdonly', 'spike'
 %
 % Outputs: 
 %     iflaw   - estimated IF law
@@ -15,14 +16,16 @@
 %     f_scale - frequency scale factor
 %
 % Example:
-%     b=load('PLED_example_epoch.mat');
+%     b=load('synth_signal_example_0dB.mat');
 %     [iflaw,t_scale,f_scale]=estIF_epoch_overlapadd(b.x,b.Fs);
 %
 %     % plot:
-%     figure(1); clf; 
+%     figure(1); clf;  hold all;
 %     n=1:length(iflaw);
 %     plot(n.*t_scale,iflaw.*f_scale);
-%     xlim([10 30]); ylim([0 5]);
+%     plot( (1:length(b.true_IF))./b.Fs,b.true_IF);
+%     legend('proposed','true IF');
+%     xlim([10 30]); ylim([0 2]);
 %     xlabel('time (seconds)'); 
 %     ylabel('frequency (Hz)'); 
 
@@ -31,8 +34,9 @@
 %-------------------------------------------------------------------------------
 function [iflaw,t_scale,f_scale]=estIF_epoch_overlapadd(x,Fs,METHOD_TYPE)
 if(nargin<2) error('Need input signal and sampling frequency.'); end
+% either 'tfd', 'tfdonly', or 'spike' :
 if(nargin<3 || isempty(METHOD_TYPE)) METHOD_TYPE='tfd'; end
-% either 'tfd', 'tfdonly', or 'spike'
+
 
 if(size(x,1)<2) x=x.'; end
 
@@ -243,36 +247,6 @@ end
 iflaw=if_total;
 
 
-
-%---------------------------------------------------------------------
-% Debug: plot etc.
-%---------------------------------------------------------------------
-if(DB)
-    figure(24); clf;
-    eeg_plot_simple([x,y_test],Fs,{'orig','epoched'},24);
-    
-    figure(25); clf;
-    n=(0:N_if-1).*t_scale;
-    plot(n,if_total,n,if_weight,n,if_win_weigth);
-end
-
-
-if(DB)
-    figure(27); clf;
-    for k=1:N_epochs
-        if(~isempty(if_law{k}))
-            nf=mod(nw+(k-1)*L_hop,N);
-            start_time=nf(1)/Fs;
-
-            km=mod(k-1,7)+1;
-            line_color=get(gca,'ColorOrder');
-            plot(if_law{k}(:,1)+start_time,if_law{k}(:,2), ...
-                 'Color',line_color(km,:));
-            hold on;
-        end
-    end
-end
-    
 
 
 

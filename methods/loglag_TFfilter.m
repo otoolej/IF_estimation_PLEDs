@@ -13,13 +13,13 @@
 %     tfd_filt - filtered time-frequency distribution
 %
 % Example:
-%      b=load('PLED_example_epoch.mat');
+%      b=load('synth_signal_example_0dB.mat');
 %      x=b.x(1:1024);
+%
 %      tf=gen_TFD_EEG(x,b.Fs,512,'sep');
 %      tf_filt=loglag_TFfilter(tf,b.Fs);
 %
-%      figure(1); clf;
-%      wide_vtfd(tf_filt,x,b.Fs,0.5,10);
+%      figure(1); clf; vtfd(tf_filt,x,b.Fs);
 
 % John M. O' Toole, University of Deusto
 % Started: 08-05-2012

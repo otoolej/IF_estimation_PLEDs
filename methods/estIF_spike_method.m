@@ -14,13 +14,15 @@
 %     f_scale        - frequency scaling factor
 %
 % Example:
-%     b=load('PLED_example_epoch.mat');
-%     [iflaw,~,f_scale]=estIF_spike_method(b.x,b.Fs);
+%     b=load('synth_signal_example_0dB.mat');
+%     if_law=estIF_spike_method(b.x,b.Fs);
 %
 %     % plot:
-%     figure(1); clf; 
-%     plot(iflaw(:,1),iflaw(:,2));
-%     xlim([10 30]); ylim([0 5]);
+%     figure(1); clf;  hold all;
+%     plot(if_law(:,1),if_law(:,2)); 
+%     plot( (1:length(b.true_IF))./b.Fs,b.true_IF);
+%     legend('proposed','true IF');
+%     xlim([10 30]); ylim([0 4]);
 %     xlabel('time (seconds)'); 
 %     ylabel('frequency (Hz)'); 
 %
@@ -35,9 +37,6 @@
 %-------------------------------------------------------------------------------
 function [if_law,if_law_samples,f_scale]=estIF_spike_method(x,Fs,Ntime)
 if(nargin<3 || isempty(Ntime)) Ntime=length(x); end
-
-DBplot=0;
-
 
 if_law=[]; if_law_samples=[]; tf=[];
 
@@ -63,8 +62,6 @@ xnz(nzeros)=x(nzeros);
 ipeaks=find(abs(xnz)>0);
 rr=diff(abs(ipeaks));
 
-if(DBplot) rro=rr; ipeakso=ipeaks; end
-
 
 % trim short periods (below 1/5Hz)
 ishort=find(rr<(1/ULIMIT_FREQ_EST)*Fs);
@@ -72,8 +69,6 @@ rr(ishort)=[];
 ipeaks(ishort)=[];
 
 ff=1./rr;
-
-if(DBplot) ffo=1./rro; end
 
 
 ipeaks_p=[];

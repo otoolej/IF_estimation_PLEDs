@@ -14,11 +14,12 @@
 %     sp_train  - enhanced spikes with thresholding
 %
 % Example:
-%      b=load('PLED_example_epoch.mat');
+%      b=load('synth_signal_example_0dB.mat');
+%
 %      [se,st]=locate_spikes(b.x,b.Fs,'DEBURCH',0);
-%      L=length(b.x);
-%      figure(1); clf; plot(1:L,b.x,1:L,st);
-%      figure(2); clf; plot(1:L,b.x,1:L,se);
+%      n=(1:length(b.x))./b.Fs;
+%      figure(1); clf; plot(n,b.x,n,st); xlim([0 40]); xlabel('time (sec)');
+%      figure(2); clf; plot(n,b.x,n,se); xlim([0 40]); xlabel('time (sec)');
 %      
 %     
 % [1] Kaiser, J. On a simple algorithm to calculate the ‘energy’ of a signal.  In:
