@@ -31,12 +31,12 @@ x=b.x; Fs=b.Fs;
 
 % 2. plot:
 figure(2); clf;  hold all;
-t=(1:length(iflaw)).*t_scale;
+t=(1:length(iflaw_tfd)).*t_scale;
 plot(t,iflaw_tfd.*f_scale);
 plot(t,iflaw_tfdonly.*f_scale);
-plot((1:length(iflaw)).*t_scale_spike,iflaw_spike.*f_scale_spike);
-n=1:length(true_IF);
-plot(n./Fs,true_IF);
+plot((1:length(iflaw_spike)).*t_scale_spike,iflaw_spike.*f_scale_spike);
+n=1:length(b.true_IF);
+plot(n./Fs,b.true_IF);
 legend('proposed','TFD only','spike detection','true IF');
 xlim([10 30]); ylim([0 3]);
 xlabel('time (seconds)'); 

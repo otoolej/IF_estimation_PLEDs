@@ -85,7 +85,6 @@ min_component_length=floor( MIN_IF_LENGTH/t_scale );
 % 1) estimate IF tracks (using method in [1])
 %---------------------------------------------------------------------
 if_tracks=tracks_MCQmethod(tfd,Fs,delta_freq_samples,min_component_length);
-delta_freq_samples,min_component_length
   
 if(isempty(if_tracks))
     return;
