@@ -42,11 +42,11 @@ An example, from [[1]](#references), compares the proposed IF estimation method 
 ### example 2
 To generate the PLED (periodic lateralized epilepiform discharges) example figure from [[1]](#references):
 ```matlab
-  >> generate_Fig_IFest_exampl('a');
-  >> generate_Fig_IFest_exampl('b');
-  >> generate_Fig_IFest_exampl('c');
-  >> generate_Fig_IFest_exampl('d');
-  >> generate_Fig_IFest_exampl('e');
+  >> generate_Fig_IFest_example('a');
+  >> generate_Fig_IFest_example('b');
+  >> generate_Fig_IFest_example('c');
+  >> generate_Fig_IFest_example('d');
+  >> generate_Fig_IFest_example('e');
 ```
 
 ## synthetic signals
@@ -89,7 +89,13 @@ Estimate the IF on synthetic signal using the proposed method (log-lag time-freq
 
 
 # requirements
-Either Matlab (R2012 or newer, http://www.mathworks.co.uk/products/matlab/) or Octave (v3.6 or newer, http://www.gnu.org/software/octave/index.html, with the 'octave-signal' add-on package).  In addition, the fast time-frequency distribution algorithms are required [[3]](#references), and are available for free [download](https://github.com/otoolej/fast_TFDs/zipball/master).
+Either Matlab (R2012 or newer,
+[Mathworks website](http://www.mathworks.co.uk/products/matlab/)) or Octave (v3.6 or
+newer, [Octave website](http://www.gnu.org/software/octave/index.html), with the
+'octave-signal' add-on package).  In addition, the fast time-frequency distribution
+algorithms are required [[3]](#references), and are available for free
+[download](https://github.com/otoolej/fast_TFDs/zipball/master) with instructions for use
+[fast_TFDs website](http://otoolej.github.io/code/fast_TFDs/).
 
 
 
